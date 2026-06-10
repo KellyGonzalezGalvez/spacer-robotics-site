@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers | Spacer Robotics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--dark:#0A0A08;--dark2:#111110;--dark3:#191917;--white:#F8F6F1;--white2:#EDEAE3;--gray:#9A9890;--gray2:#6A6864;--rule-dark:rgba(248,246,241,0.1);--rule-light:rgba(10,10,8,0.1);--orange:#F0A500;--orange2:#D69200;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+#cur{position:fixed;width:8px;height:8px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(240,165,0,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+#sprog{position:fixed;top:64px;left:0;right:0;height:3px;background:rgba(240,165,0,0.15);z-index:99}
+#sbar{height:100%;width:0%;background:var(--orange)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(10,10,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule-dark)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:30px;filter:brightness(0) invert(1)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(248,246,241,.5);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-li a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--rule-dark);color:rgba(248,246,241,.5);text-decoration:none;transition:all .2s;font-size:12px}
+.nav-li a:hover{color:var(--white);border-color:rgba(248,246,241,.3)}
+.nav-cta{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);background:var(--orange);border:none;padding:10px 22px;cursor:none;transition:background .2s;text-decoration:none}
+.nav-cta:hover{background:var(--orange2)}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.rv.lf{transform:translateX(-28px)}.rv.rt{transform:translateX(28px)}.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.btn{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:13px 26px;border:none;transition:all .2s;display:inline-block;cursor:none}
+.btn-orange{background:var(--orange);color:var(--dark)}.btn-orange:hover{background:var(--orange2)}
+.btn-ghost-light{background:transparent;color:rgba(248,246,241,.7);border:1px solid var(--rule-dark)}.btn-ghost-light:hover{color:var(--white);border-color:rgba(248,246,241,.3)}
+.btn-ghost-dark{background:transparent;color:var(--dark);border:1px solid rgba(10,10,8,.25)}.btn-ghost-dark:hover{border-color:var(--orange);color:var(--orange)}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+h2{font-family:var(--cond);font-size:clamp(40px,5.5vw,76px);font-weight:900;line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+h3{font-family:var(--cond);font-size:clamp(28px,3.5vw,48px);font-weight:800;line-height:1;letter-spacing:-.01em;text-transform:uppercase}
+.orange-rule{height:3px;background:var(--orange);width:100%}
+
+/* HERO */
+.c-hero{min-height:55vh;padding-top:64px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;border-bottom:3px solid var(--orange)}
+.c-hero-bg{position:absolute;inset:0}
+.c-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.3}
+.c-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,8,.5) 0%,rgba(10,10,8,.96) 100%)}
+.c-hero-inner{position:relative;z-index:2;padding:0 48px 64px}
+.c-hero-inner .lbl{animation:fu .6s .2s ease both}
+.c-hero-inner h2{font-size:clamp(52px,8vw,110px);animation:fu .7s .3s ease both;margin-bottom:16px}
+.c-hero-inner p{font-size:16px;color:rgba(248,246,241,.6);max-width:520px;line-height:1.65;animation:fu .6s .4s ease both}
+
+/* WHY — WHITE */
+.why-section{background:var(--white);padding:100px 48px}
+.why-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.why-img{overflow:hidden;border:1px solid var(--rule-light)}
+.why-img img{width:100%;display:block;transition:transform .5s}
+.why-img:hover img{transform:scale(1.03)}
+.why-quote{margin-top:20px;padding:24px 28px;border-left:3px solid var(--orange);background:var(--white2)}
+.why-quote p{font-size:16px;font-style:italic;color:rgba(10,10,8,.6);line-height:1.6}
+.why-quote em{color:var(--dark);font-style:normal;font-weight:600}
+.why-perks{display:flex;flex-direction:column}
+.perk{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid var(--rule-light)}
+.perk:first-child{border-top:1px solid var(--rule-light)}
+.perk-icon{width:36px;height:36px;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background .2s}
+.perk:hover .perk-icon{background:var(--orange2)}
+.perk-icon svg{width:14px;height:14px;stroke:var(--dark);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.perk-title{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;letter-spacing:.01em}
+.perk-desc{font-size:13px;color:rgba(10,10,8,.55);line-height:1.6}
+
+/* ROLES — DARK */
+.roles-section{background:var(--dark);padding:100px 48px;border-top:3px solid var(--orange)}
+.roles-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--rule-dark)}
+.roles-city-img{overflow:hidden;border:1px solid var(--rule-dark)}
+.roles-city-img img{width:100%;display:block;filter:grayscale(30%);transition:filter .4s}
+.roles-city-img:hover img{filter:grayscale(0%)}
+.roles-list{display:flex;flex-direction:column;border:1px solid var(--rule-dark)}
+.role-card{background:var(--dark);padding:32px 36px;border-bottom:1px solid var(--rule-dark);display:flex;align-items:center;justify-content:space-between;transition:background .2s;text-decoration:none;cursor:none}
+.role-card:last-child{border-bottom:none}
+.role-card:hover{background:var(--dark2)}
+.role-card:hover .role-arrow{transform:translateX(6px);color:var(--orange)}
+.role-title{font-family:var(--cond);font-size:24px;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:10px;letter-spacing:.01em}
+.role-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.role-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);background:var(--orange);padding:3px 10px}
+.role-loc{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gray)}
+.role-loc svg{width:11px;height:11px;stroke:var(--gray);fill:none;stroke-width:2;flex-shrink:0}
+.role-arrow{font-size:22px;color:var(--gray);transition:transform .3s,color .3s;flex-shrink:0}
+
+/* MARQUEE */
+.mq{border-top:3px solid var(--orange);padding:18px 0;overflow:hidden;background:var(--dark2)}
+.mqt{display:flex;gap:0;animation:sc 22s linear infinite;white-space:nowrap}
+.mqt:hover{animation-play-state:paused}
+@keyframes sc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mqi{display:flex;align-items:center;font-family:var(--cond);font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(248,246,241,.3);transition:color .3s;flex-shrink:0}
+.mqi:hover{color:var(--orange)}
+.mq-sep{display:inline-block;width:3px;height:3px;background:var(--orange);border-radius:50%;margin:0 32px;opacity:.6;flex-shrink:0}
+
+/* NO FIT — WHITE */
+.no-fit{background:var(--white);padding:100px 48px}
+.no-fit-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.no-fit h2{color:var(--dark);margin-bottom:16px}
+.no-fit p{font-size:16px;color:rgba(10,10,8,.55);line-height:1.7;margin-bottom:32px}
+.no-fit-actions{display:flex;gap:14px;flex-wrap:wrap}
+.no-fit-quote{border:1px solid var(--rule-light);background:var(--white2);padding:48px;text-align:center}
+.no-fit-quote-mark{font-family:var(--cond);font-size:120px;font-weight:900;color:var(--orange);opacity:.15;line-height:.8;margin-bottom:16px}
+.no-fit-quote p{font-size:18px;font-style:italic;color:rgba(10,10,8,.6);line-height:1.6;margin-bottom:20px}
+.no-fit-quote cite{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+
+/* MOBILE NAV */
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--white)}
+#mobile-nav{position:fixed;inset:0;background:var(--dark);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;transform:translateX(100%);transition:transform .35s ease}
+#mobile-nav.open{transform:translateX(0)}
+#mobile-nav ul{list-style:none;text-align:center;display:flex;flex-direction:column;gap:32px}
+#mobile-nav ul a{font-family:var(--cond);font-size:40px;font-weight:900;text-transform:uppercase;color:var(--white);text-decoration:none;transition:color .2s}
+#mobile-nav ul a:hover{color:var(--orange)}
+.mobile-nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;opacity:.7}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:0 28px}
+  .nav-links{gap:20px}
+  .c-hero-inner{padding:0 28px 48px}
+  .why-section{padding:72px 28px}
+  .why-layout{grid-template-columns:1fr;gap:40px}
+  .roles-section{padding:72px 28px}
+  .roles-header{grid-template-columns:1fr;gap:32px}
+  .no-fit{padding:72px 28px}
+  .no-fit-layout{grid-template-columns:1fr;gap:40px}
+  footer{padding:48px 28px 32px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:768px){
+  nav{padding:0 20px;height:56px}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-li{display:none}
+  .c-hero{min-height:50vh}
+  .c-hero-inner{padding:0 20px 36px}
+  .c-hero-inner h2{font-size:clamp(40px,10vw,70px)}
+  .why-section{padding:56px 20px}
+  .why-layout{grid-template-columns:1fr}
+  .roles-section{padding:56px 20px}
+  .roles-header{grid-template-columns:1fr;gap:24px}
+  .role-card{padding:24px 20px}
+  .role-title{font-size:20px}
+  .no-fit{padding:56px 20px}
+  .no-fit-layout{grid-template-columns:1fr}
+  footer{padding:40px 20px 28px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:480px){
+  .c-hero-inner h2{font-size:clamp(36px,11vw,56px)}
+  .role-title{font-size:18px}
+  .why-perks .perk{gap:14px}
+}
+@media(hover:none){#cur,#cur-r{display:none}body{cursor:auto}.btn,.nav-cta{cursor:pointer}}
+
+/* end styles */
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+<div id="sprog"><div id="sbar"></div></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="https://static.wixstatic.com/media/4c52f7_b31092715f6548a7988b9a660f791566~mv2.png" alt="Spacer Robotics">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#sr-grid">Our Robots</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-li"><a href="https://www.linkedin.com/company/spacer-robotics" target="_blank">in</a></div>
+    <a class="nav-cta" href="index.html#sr-contact">Contact Us</a>
+    <button class="nav-burger" onclick="document.getElementById('mobile-nav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div id="mobile-nav">
+  <button class="mobile-nav-close" onclick="document.getElementById('mobile-nav').classList.remove('open')">✕</button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#sr-grid">Our Robots</a></li>
+    <li><a href="careers.html" onclick="document.getElementById('mobile-nav').classList.remove('open')">Careers</a></li>
+    <li><a href="index.html#sr-contact">Contact Us</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="c-hero">
+  <div class="c-hero-bg">
+    <img src="https://static.wixstatic.com/media/36a7b9_cff9b11bb6c0405197ec22ce2e623552~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_85,enc_avif,quality_auto/Rebar_04.jpg" alt="Jobsite">
+  </div>
+  <div class="c-hero-inner">
+    <div class="lbl">Build the Future</div>
+    <h2>Careers at<br>Spacer Robotics</h2>
+    <p>We're building the future of construction with robotics and Physical AI. We value curiosity, creativity, and bold ideas — giving you the freedom to innovate and the support to grow.</p>
+  </div>
+</section>
+
+<!-- WHY — WHITE -->
+<section class="why-section">
+  <div class="why-layout">
+    <div>
+      <div class="why-img rv lf">
+        <img src="https://static.wixstatic.com/media/36a7b9_cff9b11bb6c0405197ec22ce2e623552~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_avif,quality_auto/Rebar_04.jpg" alt="GRID on rebar">
+      </div>
+      <div class="why-quote rv lf d2">
+        <p>Spacer Robotics is more than a workplace — it's a community where <em>your ideas matter and your career can thrive.</em></p>
+      </div>
+    </div>
+    <div>
+      <div class="lbl rv">Why you'll love working with us</div>
+      <div class="why-perks">
+        <div class="perk rv d1">
+          <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div><div class="perk-title">Work on exciting, meaningful technology</div><div class="perk-desc">Build robots that solve real problems on real construction sites.</div></div>
+        </div>
+        <div class="perk rv d2">
+          <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div><div class="perk-title">Collaborate with passionate, talented teammates</div><div class="perk-desc">Work alongside experts from Tesla, Scania, Nuro, and top robotics labs.</div></div>
+        </div>
+        <div class="perk rv d3">
+          <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+          <div><div class="perk-title">Learn and grow in a creative, supportive environment</div><div class="perk-desc">Hands-on experience with cutting-edge hardware and mentorship from industry leaders.</div></div>
+        </div>
+        <div class="perk rv d4">
+          <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <div><div class="perk-title">Enjoy a healthy work-life balance</div><div class="perk-desc">Flexible hours, a culture of respect, and a team that looks out for each other.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES — DARK -->
+<section class="roles-section" id="open-roles">
+  <div class="roles-header">
+    <div class="rv lf">
+      <div class="lbl">Current Openings</div>
+      <h2>Roles in San Francisco, CA</h2>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gray)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        In Office — San Francisco, CA
+      </div>
+    </div>
+    <div class="roles-city-img rv rt">
+      <img src="https://static.wixstatic.com/media/11062b_23f23c6884e54d87af87e23e9d2da8d6f000.jpg/v1/fill/w_900,h_500,al_c,q_85,enc_avif,quality_auto/11062b_23f23c6884e54d87af87e23e9d2da8d6f000.jpg" alt="San Francisco" onerror="this.parentElement.style.display='none'">
+    </div>
+  </div>
+
+  <div class="roles-list rv">
+    <a href="#" class="role-card">
+      <div>
+        <div class="role-title">Robotics Engineering Intern</div>
+        <div class="role-meta">
+          <span class="role-tag">Internship</span>
+          <span class="role-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>In Office (San Francisco, CA)</span>
+        </div>
+      </div>
+      <span class="role-arrow">→</span>
+    </a>
+    <a href="#" class="role-card">
+      <div>
+        <div class="role-title">Senior Mechanical (Mechatronics) Engineer</div>
+        <div class="role-meta">
+          <span class="role-tag">Full-time</span>
+          <span class="role-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>In Office (San Francisco, CA)</span>
+        </div>
+      </div>
+      <span class="role-arrow">→</span>
+    </a>
+    <a href="#" class="role-card">
+      <div>
+        <div class="role-title">Senior Robotics Software Engineer</div>
+        <div class="role-meta">
+          <span class="role-tag">Full-time</span>
+          <span class="role-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>In Office (San Francisco, CA)</span>
+        </div>
+      </div>
+      <span class="role-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mqt">
+    <div class="mqi">Robotics Engineering<span class="mq-sep"></span></div><div class="mqi">Mechatronics<span class="mq-sep"></span></div><div class="mqi">Software Engineering<span class="mq-sep"></span></div><div class="mqi">Physical AI<span class="mq-sep"></span></div><div class="mqi">Computer Vision<span class="mq-sep"></span></div><div class="mqi">San Francisco, CA<span class="mq-sep"></span></div>
+    <div class="mqi">Robotics Engineering<span class="mq-sep"></span></div><div class="mqi">Mechatronics<span class="mq-sep"></span></div><div class="mqi">Software Engineering<span class="mq-sep"></span></div><div class="mqi">Physical AI<span class="mq-sep"></span></div><div class="mqi">Computer Vision<span class="mq-sep"></span></div><div class="mqi">San Francisco, CA<span class="mq-sep"></span></div>
+  </div>
+</div>
+
+<!-- NO FIT — WHITE -->
+<section class="no-fit">
+  <div class="no-fit-layout">
+    <div class="rv lf">
+      <div class="lbl">Don't see a fit?</div>
+      <h2 style="color:var(--dark)">Get in touch<br>anyway</h2>
+      <p style="margin-top:16px">We're always looking for exceptional people. If you're passionate about robotics and construction and don't see a role that fits, reach out — we'd love to hear from you.</p>
+      <div class="no-fit-actions">
+        <a href="index.html#sr-contact" class="btn btn-orange">Contact Us</a>
+        <a href="https://www.linkedin.com/company/spacer-robotics" target="_blank" class="btn btn-ghost-dark">LinkedIn</a>
+      </div>
+    </div>
+    <div class="no-fit-quote rv rt">
+      <div class="no-fit-quote-mark">"</div>
+      <p>We're building the robots that will shape the future of construction — and we need the best minds to do it.</p>
+      <cite>Lesya Hendrix — Founder & CEO</cite>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function rl(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(rl)})();
+const sb=document.getElementById('sbar');
+window.addEventListener('scroll',()=>{sb.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+document.querySelectorAll('.btn,.nav-cta').forEach(btn=>{btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.18}px)`});btn.addEventListener('mouseleave',()=>btn.style.transform='')});
+</script>
+</body>
+</html>
