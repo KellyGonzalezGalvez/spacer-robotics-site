@@ -285,7 +285,7 @@ h1 span{color:var(--orange)}
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="#sr-grid">Our Robots</a></li>
-    <li><a href="careers.html">Careers</a></li>
+    <li><a href="https://kellygonzalezgalvez.github.io/spacer-robotics-site/careers.html">Careers</a></li>
   </ul>
   <div class="nav-right">
     <a class="nav-cta" href="#sr-contact">Contact Us</a>
@@ -301,7 +301,7 @@ h1 span{color:var(--orange)}
   <ul>
     <li><a href="index.html" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a></li>
     <li><a href="#sr-grid" onclick="document.getElementById('mobile-nav').classList.remove('open')">Our Robots</a></li>
-    <li><a href="careers.html">Careers</a></li>
+    <li><a href="https://kellygonzalezgalvez.github.io/spacer-robotics-site/careers.html">Careers</a></li>
     <li><a href="#sr-contact" onclick="document.getElementById('mobile-nav').classList.remove('open')">Contact Us</a></li>
   </ul>
 </div>
@@ -548,7 +548,7 @@ h1 span{color:var(--orange)}
       <h2 style="color:var(--dark);margin-bottom:4px">Building the future<br>of construction</h2>
       <div class="about-name">Lesya Hendrix — Founder & CEO</div>
       <p class="about-bio">Ex-Tesla, Scania, and Nuro. #1 Woman in Hardware. Expert in robotics, EVs, and automotive engineering.</p>
-      <a href="https://www.linkedin.com/in/lesya-hendrix/" target="_blank" class="btn btn-dark">Follow Lesya on LinkedIn →</a>
+      <a href="https://www.linkedin.com/in/lesya-hendrix/" class="btn btn-dark">Follow Lesya on LinkedIn →</a>
     </div>
   </div>
 </section>
@@ -560,30 +560,61 @@ h1 span{color:var(--orange)}
     <h2>Contact our team</h2>
   </div>
   <div class="contact-grid">
+
+    <!-- NEWSLETTER FORM -->
     <div class="contact-pane rv lf">
       <div class="lbl">Get Updates</div>
       <h3 style="color:var(--white);margin-bottom:12px">Subscribe to<br>our newsletter</h3>
       <p class="contact-sub" style="margin-top:12px">Stay updated on GRID deployments, new robot announcements, and company milestones.</p>
-      <div class="form-field"><label>Email *</label><input type="email" placeholder="your@email.com"></div>
-      <div class="form-check"><input type="checkbox" id="nl"><label for="nl">Yes, subscribe me to your newsletter.</label></div>
-      <button class="btn btn-orange">Submit</button>
+      <form id="newsletter-form" novalidate>
+        <div class="form-field"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-check">
+          <input type="checkbox" id="nl" name="consent" required>
+          <label for="nl">Yes, subscribe me to your newsletter.</label>
+        </div>
+        <button type="submit" class="btn btn-orange" id="nl-btn">Submit</button>
+        <div id="nl-success" style="display:none;margin-top:20px;padding:16px 20px;border:1px solid var(--orange);color:var(--orange);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">
+          ✓ You're subscribed — thank you!
+        </div>
+        <div id="nl-error" style="display:none;margin-top:20px;padding:16px 20px;border:1px solid #e05;color:#e05;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">
+          Something went wrong. Please try again.
+        </div>
+      </form>
     </div>
+
+    <!-- CONTACT FORM -->
     <div class="contact-pane rv rt">
       <div class="lbl">Direct Inquiry</div>
       <h3 style="color:var(--white);margin-bottom:12px">Contact our<br>team</h3>
       <p class="contact-sub" style="margin-top:12px">Tell us about your project and we'll get back to you within 24 hours.</p>
-      <div class="form-row">
-        <div class="form-field"><label>First name *</label><input type="text" placeholder="Jane"></div>
-        <div class="form-field"><label>Last name *</label><input type="text" placeholder="Smith"></div>
-      </div>
-      <div class="form-field"><label>Email *</label><input type="email" placeholder="jane@company.com"></div>
-      <div class="form-field"><label>Company</label><input type="text" placeholder="Your company"></div>
-      <div class="form-field"><label>Type of inquiry *</label>
-        <select><option value="">Select...</option><option>Demo Request</option><option>Partnership</option><option>Investment</option><option>Press</option><option>Other</option></select>
-      </div>
-      <div class="form-field"><label>Message</label><textarea placeholder="Write your message here"></textarea></div>
-      <button class="btn btn-orange">Send Message</button>
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-field"><label>First name *</label><input type="text" name="first_name" placeholder="Jane" required></div>
+          <div class="form-field"><label>Last name *</label><input type="text" name="last_name" placeholder="Smith" required></div>
+        </div>
+        <div class="form-field"><label>Email *</label><input type="email" name="email" placeholder="jane@company.com" required></div>
+        <div class="form-field"><label>Company</label><input type="text" name="company" placeholder="Your company"></div>
+        <div class="form-field"><label>Type of inquiry *</label>
+          <select name="inquiry_type" required>
+            <option value="">Select...</option>
+            <option>Demo Request</option>
+            <option>Partnership</option>
+            <option>Investment</option>
+            <option>Press</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Message</label><textarea name="message" placeholder="Write your message here"></textarea></div>
+        <button type="submit" class="btn btn-orange" id="contact-btn">Send Message</button>
+        <div id="contact-success" style="display:none;margin-top:20px;padding:16px 20px;border:1px solid var(--orange);color:var(--orange);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">
+          ✓ Message sent — we'll be in touch within 24 hours!
+        </div>
+        <div id="contact-error" style="display:none;margin-top:20px;padding:16px 20px;border:1px solid #e05;color:#e05;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">
+          Something went wrong. Please try again.
+        </div>
+      </form>
     </div>
+
   </div>
 </section>
 
@@ -652,7 +683,73 @@ document.querySelectorAll('.btn,.nav-cta').forEach(btn=>{
   btn.addEventListener('mouseleave',()=>btn.style.transform='');
 });
 
-// AUTO HEIGHT FOR WIX IFRAME
+// NEWSLETTER FORM — Formspree
+const nlForm = document.getElementById('newsletter-form');
+const nlBtn = document.getElementById('nl-btn');
+const nlSuccess = document.getElementById('nl-success');
+const nlError = document.getElementById('nl-error');
+
+nlForm.addEventListener('submit', async(e) => {
+  e.preventDefault();
+  if(!nlForm.email.value || !nlForm.consent.checked) return;
+  nlBtn.textContent = 'Sending...';
+  nlBtn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/mojznelj', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({email: nlForm.email.value, consent: 'Yes'})
+    });
+    if(res.ok) {
+      nlSuccess.style.display = 'block';
+      nlError.style.display = 'none';
+      nlForm.reset();
+    } else { throw new Error(); }
+  } catch {
+    nlError.style.display = 'block';
+    nlSuccess.style.display = 'none';
+  }
+  nlBtn.textContent = 'Submit';
+  nlBtn.disabled = false;
+});
+
+// CONTACT FORM — Formspree
+const ctForm = document.getElementById('contact-form');
+const ctBtn = document.getElementById('contact-btn');
+const ctSuccess = document.getElementById('contact-success');
+const ctError = document.getElementById('contact-error');
+
+ctForm.addEventListener('submit', async(e) => {
+  e.preventDefault();
+  if(!ctForm.email.value || !ctForm.first_name.value) return;
+  ctBtn.textContent = 'Sending...';
+  ctBtn.disabled = true;
+  try {
+    const data = {
+      first_name: ctForm.first_name.value,
+      last_name: ctForm.last_name.value,
+      email: ctForm.email.value,
+      company: ctForm.company.value,
+      inquiry_type: ctForm.inquiry_type.value,
+      message: ctForm.message.value
+    };
+    const res = await fetch('https://formspree.io/f/maqzdejz', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if(res.ok) {
+      ctSuccess.style.display = 'block';
+      ctError.style.display = 'none';
+      ctForm.reset();
+    } else { throw new Error(); }
+  } catch {
+    ctError.style.display = 'block';
+    ctSuccess.style.display = 'none';
+  }
+  ctBtn.textContent = 'Send Message';
+  ctBtn.disabled = false;
+});
 function sendHeight(){
   window.parent.postMessage({type:'wix-iframe-height',height:document.body.scrollHeight},'*');
 }
