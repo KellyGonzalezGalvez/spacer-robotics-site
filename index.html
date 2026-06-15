@@ -18,37 +18,12 @@
   --orange:#F0A500;--orange2:#D69200;--orange-dim:rgba(240,165,0,0.1);
   --sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
 }
-html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--dark);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none;-webkit-overflow-scrolling:touch}
 
 /* CURSOR */
 #cur{position:fixed;width:8px;height:8px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(240,165,0,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(10,10,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule-dark)}
-.nav-logo{display:flex;align-items:center;text-decoration:none}
-.nav-logo img{height:32px}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(248,246,241,0.5);text-decoration:none;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--white)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.nav-cta{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);background:var(--orange);border:none;padding:10px 22px;cursor:none;transition:background .2s;text-decoration:none}
-.nav-cta:hover{background:var(--orange2)}
-.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--white)}
-
-/* SCROLL PROGRESS */
-#sprog{position:fixed;top:64px;left:0;right:0;height:3px;background:rgba(240,165,0,0.15);z-index:99}
-#spbar{height:100%;width:0%;background:var(--orange);transition:width .1s linear}
-
-/* MOBILE NAV */
-#mobile-nav{position:fixed;inset:0;background:var(--dark);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;transform:translateX(100%);transition:transform .35s ease}
-#mobile-nav.open{transform:translateX(0)}
-#mobile-nav ul{list-style:none;text-align:center;display:flex;flex-direction:column;gap:32px}
-#mobile-nav ul a{font-family:var(--cond);font-size:40px;font-weight:900;text-transform:uppercase;color:var(--white);text-decoration:none;transition:color .2s}
-#mobile-nav ul a:hover{color:var(--orange)}
-.mobile-nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;opacity:.7}
 
 /* ANIMATIONS */
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -71,7 +46,7 @@ h3{font-family:var(--cond);font-size:clamp(28px,4vw,48px);font-weight:800;line-h
 .orange-rule{height:3px;background:var(--orange);width:100%}
 
 /* HERO */
-.hero{min-height:100vh;padding-top:64px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero{min-height:100vh;padding-top:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.45}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,8,.4) 0%,rgba(10,10,8,.2) 30%,rgba(10,10,8,.7) 70%,rgba(10,10,8,.98) 100%)}
@@ -276,38 +251,13 @@ h1 span{color:var(--orange)}
 </head>
 <body>
 
+
+
+
+
+<!-- CURSOR -->
 <div id="cur"></div>
 <div id="cur-r"></div>
-<div id="sprog"><div id="spbar"></div></div>
-
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="index.html">
-    <img src="https://static.wixstatic.com/shapes/4c52f7_ab475d3373b146eab9fad814382570bb.svg" alt="Spacer Robotics">
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="#sr-grid">Our Robots</a></li>
-    <li><a href="https://kellygonzalezgalvez.github.io/spacer-robotics-site/careers.html">Careers</a></li>
-  </ul>
-  <div class="nav-right">
-    <a class="nav-cta" href="#sr-contact">Contact Us</a>
-    <button class="nav-burger" onclick="document.getElementById('mobile-nav').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE NAV -->
-<div id="mobile-nav">
-  <button class="mobile-nav-close" onclick="document.getElementById('mobile-nav').classList.remove('open')">✕</button>
-  <ul>
-    <li><a href="index.html" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a></li>
-    <li><a href="#sr-grid" onclick="document.getElementById('mobile-nav').classList.remove('open')">Our Robots</a></li>
-    <li><a href="https://kellygonzalezgalvez.github.io/spacer-robotics-site/careers.html">Careers</a></li>
-    <li><a href="#sr-contact" onclick="document.getElementById('mobile-nav').classList.remove('open')">Contact Us</a></li>
-  </ul>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -589,7 +539,7 @@ h1 span{color:var(--orange)}
     <div class="contact-pane rv rt">
       <div class="lbl">Direct Inquiry</div>
       <h3 style="color:var(--white);margin-bottom:12px">Contact our<br>team</h3>
-      <p class="contact-sub" style="margin-top:12px">Tell us about your project and we'll get back to you.</p>
+      <p class="contact-sub" style="margin-top:12px">Tell us about your project and we'll get back to you within 24 hours.</p>
       <form id="contact-form" novalidate>
         <div class="form-row">
           <div class="form-field"><label>First name *</label><input type="text" name="first_name" placeholder="Jane" required></div>
@@ -610,7 +560,7 @@ h1 span{color:var(--orange)}
         <div class="form-field"><label>Message</label><textarea name="message" placeholder="Write your message here"></textarea></div>
         <button type="submit" class="btn btn-orange" id="contact-btn">Send Message</button>
         <div id="contact-success" style="display:none;margin-top:20px;padding:16px 20px;border:1px solid var(--orange);color:var(--orange);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">
-          ✓ Message sent — we'll be in touch!
+          ✓ Message sent — we'll be in touch within 24 hours!
         </div>
         <div id="contact-error" style="display:none;margin-top:20px;padding:16px 20px;border:1px solid #e05;color:#e05;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">
           Something went wrong. Please try again.
@@ -630,12 +580,6 @@ document.addEventListener('mousemove',e=>{
   cur.style.left=mx+'px';cur.style.top=my+'px';
 });
 (function rl(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(rl)})();
-
-// SCROLL PROGRESS
-const spbar=document.getElementById('spbar');
-window.addEventListener('scroll',()=>{
-  spbar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
-},{passive:true});
 
 // SCROLL REVEAL
 const obs=new IntersectionObserver(e=>e.forEach(x=>{
@@ -754,11 +698,19 @@ ctForm.addEventListener('submit', async(e) => {
   ctBtn.disabled = false;
 });
 function sendHeight(){
-  window.parent.postMessage({type:'wix-iframe-height',height:document.body.scrollHeight},'*');
+  const h=Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.scrollHeight
+  );
+  window.parent.postMessage({type:'wix-iframe-height',height:h},'*');
 }
-[300,800,1500,3000].forEach(t=>setTimeout(sendHeight,t));
+[100,300,500,1000,2000,3000,5000].forEach(t=>setTimeout(sendHeight,t));
 window.addEventListener('load',sendHeight);
 window.addEventListener('resize',sendHeight);
+document.querySelectorAll('img').forEach(img=>{
+  if(!img.complete)img.addEventListener('load',sendHeight);
+});
 </script>
 </body>
 </html>
