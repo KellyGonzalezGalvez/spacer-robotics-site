@@ -50,7 +50,7 @@ h3{font-family:var(--cond);font-size:clamp(28px,4vw,48px);font-weight:800;line-h
 .orange-rule{height:3px;background:var(--orange);width:100%}
 
 /* HERO */
-.hero{height:calc(100vh - 70px);max-height:calc(100vh - 70px);padding-top:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero{height:85vh;padding-top:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%;opacity:.45}
 .hero-inner{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 48px;position:relative;z-index:2}
@@ -580,24 +580,6 @@ h1 span{color:var(--orange)}
 </section>
 
 <script>
-// DYNAMIC HERO HEIGHT — accounts for Wix nav above iframe
-(function(){
-  const nav = 70; // Wix nav height in px
-  const hero = document.querySelector('.hero');
-  if(hero){
-    const h = window.innerHeight - nav;
-    hero.style.height = h + 'px';
-    hero.style.maxHeight = h + 'px';
-  }
-  window.addEventListener('resize', function(){
-    const h = window.innerHeight - nav;
-    if(hero){
-      hero.style.height = h + 'px';
-      hero.style.maxHeight = h + 'px';
-    }
-  });
-})();
-
 // SCROLL PROGRESS
 const spbar=document.getElementById('spbar');
 window.addEventListener('scroll',()=>{
